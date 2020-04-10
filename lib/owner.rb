@@ -3,15 +3,13 @@ attr_accessor :cats, :dogs, :pets
 attr_reader :name, :species 
 
 @@all = []
-@@count = 0
-@@cats = []
-@@dogs = []
 def initialize(name)
+  @cats = []
+  @dogs = []
   @name = name
   @species = "human"
   @@all << self
-  @@count += 1
-  @pets = {:cats => [], :dogs => []}
+ # @pets = {:cats => [], :dogs => []}
 end
 
 def say_species
@@ -23,11 +21,11 @@ def self.all
 end
 
 def self.count
-  @@count
+  @@all.length
 end
 
 def self.reset_all
-  @@count = 0
+  @@all.clear
 end
 
 def cats                                    #calls on the list of cats that the owner ownes
