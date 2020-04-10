@@ -9,7 +9,6 @@ def initialize(name)
   @name = name
   @species = "human"
   @@all << self
- # @pets = {:cats => [], :dogs => []}
 end
 
 def say_species
@@ -28,14 +27,6 @@ def self.reset_all
   @@all.clear
 end
 
-def cats                                    #calls on the list of cats that the owner ownes
-  Cat.all.select {|cat| cat.owner == self}
-end
-
-def dogs
-  Dog.all.select {|dog| dog.owner == self}
-end
-
  def buy_cat(name)
    name = Cat.new(name, self)
  end
@@ -45,11 +36,11 @@ end
  end
 
  def walk_dogs
-   Dog.all.each {|dog| dog.mood = "happy" if dog.owner == self}
+   self.dogs.each {|dog| dog.mood = "happy"}
  end
  
  def feed_cats
-   Cat.all.each {|cat| cat.mood = "happy" if cat.owner == self}
+   self.cats.each {|cat| cat.mood = "happy"}
  end
  
 def sell_pets
