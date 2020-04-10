@@ -44,10 +44,16 @@ end
  end
  
 def sell_pets
-  Dog.all.each {|dog| dog.mood = "nervous" if dog.owner == self}
-  Cat.all.each {|cat| cat.mood = "nervous" if cat.owner == self}
-  Dog.all.each {|dog| dog.owner = nil if dog.owner == self}
-  Cat.all.each {|cat| cat.owner = nil if cat.owner == self}
+  self.dogs.each do |dog|
+     dog.mood = "nervous"
+     dog.owner = nil
+   end
+   
+  
+  
+  self.cats.each {|cat| cat.mood = "nervous"}
+  #self.dogs.each {|dog| dog.owner = nil if dog.owner == self}
+  #Cat.cats.each {|cat| cat.owner = nil if cat.owner == self}
 end
 
 def list_pets
